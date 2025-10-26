@@ -67,31 +67,39 @@ export default function App() {
 
   return (
     <div className="container">
-      <h1>예약 목록,채팅 목록</h1>
+      <h1>예약 목록, 채팅 목록</h1>
 
       <div className="tabs">
-        <button className={view==="reservationList"?"active":""} onClick={()=>setView("reservationList")}>예약 목록</button>
-        <button className={view==="chatingList"?"active":""} onClick={()=>setView("chatingList")}>채팅 목록</button>
+        <button className={view === "reservationList" ? "active" : ""} onClick={() => setView("reservationList")}>
+          예약 목록
+        </button>
+        <button className={view === "chatingList" ? "active" : ""} onClick={() => setView("chatingList")}>
+          채팅 목록
+        </button>
       </div>
 
       <div className="views">
-        <section className={view==="reservationList" ? view : ""}>
-          <h2>예약 목록</h2>
-          <ReservationRequests
+        {view === "reservationList" &&(
+          <section>
+            <h2>예약 목록</h2>
+            <ReservationRequests
             reservations={reservations}
             onUpdateStatus={updateReservationStatusById}
-          />
-        </section>
+            />
+          </section>
+        )}
 
-        <section className={view==="chatingList" ? view : ""}>
-          <h2>채팅 목록</h2>
-          <ChatList
+        {view === "chatingList" && (
+          <section>
+            <h2>채팅 목록</h2>
+            <ChatList
             chats={chats}
-            onAccept={(name) => updateReservationStatusByCustomer(name, "ACCEPTED")}
-            onReject={(name) => updateReservationStatusByCustomer(name, "REJECTED")}
-            onPending={(name) => updateReservationStatusByCustomer(name, "PENDING")}
-          />
-        </section>
+            onAccept={(name) => updateReservationStatusByCustomer (name, "ACCEPTED")}
+            onReject={(name) => updateReservationStatusByCustomer (name, "REJECTED")}
+            onPending={(name) => updateReservationStatusByCustomer (name, "PENDING")}
+            />
+          </section>
+        )}
       </div>
     </div>
   );
