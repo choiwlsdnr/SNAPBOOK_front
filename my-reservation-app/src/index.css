@@ -34,9 +34,3 @@ button.ghost { background: transparent; }
 .tabs button.active { background:#111827; color:#fff; border-color:#111827; }
 
 .empty { color:#6b7280; padding: 16px; text-align: center; }
-
-.views section {
-  display: none;
-}
-.reservationList { display:block !important; }
-.chatingList { display:block !important; }
